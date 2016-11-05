@@ -1,7 +1,7 @@
 # Common Markdex by Michael AJ
 # common/request.py
 
-from flask import Request as request, Response as response, make_response, render_template, abort, redirect, url_for, send_file, send_from_directory, safe_join
+from flask import request, Response as response, make_response, render_template, abort, redirect, url_for, send_file, send_from_directory, safe_join
 
 def GET(key):
     return request.args.get(key)
