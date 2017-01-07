@@ -4,7 +4,7 @@
 import sys
 import common.const as config
 
-config.host = '127.0.0.1'
+config.host = '0.0.0.0'
 config.port = 5000
 
 config.doc_root = 'root'

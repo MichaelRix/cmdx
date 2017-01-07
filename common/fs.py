@@ -1,4 +1,4 @@
-# Common Markdex by Michael Aj
+# Common Markdex by Michael AJ
 # common/fs.py
 
 from common.shared import *

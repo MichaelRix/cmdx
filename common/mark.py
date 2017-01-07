@@ -12,7 +12,7 @@ def add_indiv_replace(text):
     return re.sub(r'\<div(.*?)\>', r'<div\g<1> markdown="1">', text)
 
 def remove_indiv_replace(html):
-    return re.sub(r'\<div(.*?)markdown="1"\>', r'<div\g<1>>', html)
+    return re.sub(r'\<div(.*?)\x20markdown="1"\>', r'<div\g<1>>', html)
 
 def gfm(text):
     rlist = [   (r'```(\w+)\n([^`]*)```', r'<pre language="\g<1>">\n\g<2></pre>'),
@@ -30,23 +30,3 @@ def down(text):
     html = markdown(gfmed_text, extensions = ['markdown.extensions.extra', HTML5()])
     html = remove_indiv_replace(html)
     return html
-
-def test():
-    s = '<div class="awknl" id="markdown">\nWut **Blah blah** ~~undefined~~\n</div>';
-    s = gfm(s)
-    if 'del' not in s:
-        print('gfm fails')
-    print(s, '\n')
-    s = add_inhtml_replace(s)
-    if 'markdown=' not in s:
-        print('add fails')
-    print(s, '\n')
-    s = markdown(s, extensions = ['markdown.extensions.extra', HTML5()])
-    if 'strong' not in s:
-        print('markdown fails')
-    print(s, '\n')
-    s = remove_inhtml_replace(s);
-    if 'markdown=' in s:
-        print('remove fails')
-    print(s, '\n')
-    print('Finally\n', s)
